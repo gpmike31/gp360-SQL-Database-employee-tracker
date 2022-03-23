@@ -6,8 +6,8 @@ VALUES
   ('Finance'),
   ('Legal'),
 
-INSERT INTO role
-  (employeeRole, salary)
+INSERT INTO position
+  (employee_position, salary)
 VALUES
   ('Salesperson', 30000),
   ('Enginneer', 60000),
