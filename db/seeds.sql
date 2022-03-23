@@ -7,7 +7,7 @@ VALUES
   ('Legal'),
 
 INSERT INTO position
-  (employee_position, salary)
+  (title_position, salary)
 VALUES
   ('Salesperson', 30000),
   ('Enginneer', 60000),
