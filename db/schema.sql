@@ -1,17 +1,16 @@
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS position;
-DROP TABLE IF EXISTS employee;
+
+USE employee_tracker;
 
 CREATE TABLE department (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  department_name VARCHAR(30) NOT NULL
+  name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE position (
+CREATE TABLE role (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  title_position VARCHAR(30) NOT NULL,
-  department_id INT NOT NULL,
+  title VARCHAR(30) NOT NULL,
   salary DECIMAL(10, 2) NOT NULL,
+  department_id INT NOT NULL,
   FOREIGN KEY (department_id) 
   REFERENCES department(id)
     ON DELETE CASCADE
@@ -20,10 +19,14 @@ CREATE TABLE position (
 CREATE TABLE employee (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(30) NOT NULL,
-  last_name INT NOT NULL,
-  position_id INT NOT NULL,
-  FOREIGN KEY (position_id)
-  REFERENCES position(id)
-    ON DELETE CASCADE
+  last_name VARCHAR(30) NOT NULL,
+  role_id INT NOT NULL,
+  FOREIGN KEY (role_id)
+  REFERENCES role(id)
+  ON DELETE CASCADE,
+  manager_id INT, 
+  FOREIGN KEY (manager_id)
+  REFERENCES employee(id)
+  ON DELETE SET NULL 
 );
 
